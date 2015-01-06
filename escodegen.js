@@ -1807,7 +1807,9 @@
                     this.generateExpression(expr.argument, Precedence.Yield, E_TTT)
                 );
             }
-            return parenthesize(result, Precedence.Yield, precedence);
+            // TODO: revert to "return parenthesize(result, Precedence.Yield, precedence);"
+            // after https://bugzilla.mozilla.org/show_bug.cgi?id=1100441 is fixed
+            return parenthesize(result, Precedence.Yield, Infinity);
         },
 
         UpdateExpression: function (expr, precedence, flags) {
